@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Declare camera permission -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Declare storage permission for older Android versions (up to API 28) -->
+    <!-- `maxSdkVersion` ensures this is only requested on relevant versions -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+                     android:maxSdkVersion="28" />
+
+    <!-- Declare that the app uses the camera feature -->
+    <!-- android:required="true" means the app won't install on devices without a camera -->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <!-- It's good practice to declare autofocus if your app relies on it, but set required=false for wider compatibility -->
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.VideoRecorder"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
